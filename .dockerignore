@@ -1,0 +1,10 @@
+build
+.flutter-plugins
+.flutter-plugins-dependencies
+.git
+FrankMartin.jpg
+README.md
+.packages
+.idea
+.dockerignore
+.dart_tool
