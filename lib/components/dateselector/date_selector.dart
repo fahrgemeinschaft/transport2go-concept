@@ -3,7 +3,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:frank_martin/ui/query_limiter/query_limiter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:openapi/api.dart';
+import 'package:r2gapi_flutter_sdk/model/time_range.dart';
 
 
 class DateSelector extends StatefulWidget {
@@ -153,7 +153,7 @@ class DateSelectorState extends State<DateSelector> {
       });
     }
   }
-  
+
   generateDateCards(BuildContext context) {
     DateTime prev = time.subtract(Duration(days: 1));
     DateTime next = time.add(Duration(days: 1));
@@ -254,6 +254,6 @@ class DateSelectorState extends State<DateSelector> {
       "toleranceInDays": 0
     };
 
-    return TimeRange.fromJson(map);
+    return map as TimeRange;
   }
 }

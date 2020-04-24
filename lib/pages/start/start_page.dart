@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inner_drawer/inner_drawer.dart';
@@ -13,7 +15,8 @@ import 'package:frank_martin/pages/offer/offer_select_page.dart';
 import 'package:frank_martin/pages/start/start_page_slider.dart';
 import 'package:frank_martin/ui/query_limiter/query_limiter.dart';
 import 'package:morpheus/page_routes/morpheus_page_route.dart';
-import 'package:openapi/api.dart';
+import 'package:r2gapi_flutter_sdk/model/page_request.dart';
+import 'package:r2gapi_flutter_sdk/model/search.dart';
 import 'package:tetris_blocs/core/tetris_event.dart';
 import 'package:tetris_blocs/core/tetris_provider.dart';
 
@@ -336,18 +339,18 @@ class _StartPageState extends State<StartPage> with SingleTickerProviderStateMix
       "firstIndex": 0
     };
 
-    return PageRequest.fromJson(map);
+    return map as PageRequest ;
   }
 
   Search createSearch() {
     Map<String, dynamic> map = {
-      "page": getPage().toJson(),
+      "page": jsonDecode(getPage().toString()),
       "tripTypes": ["OFFER"],
       //"startPoint": _startKey.currentState.getRadius().toJson(),
       //"endPoint": _endKey.currentState.getRadius().toJson(),
-      "departure": _dateSelectorKey.currentState.getTime().toJson()
+      "departure": _dateSelectorKey.currentState.getTime()
     };
 
-    return Search.fromJson(map);
+    return map as Search;
   }
 }

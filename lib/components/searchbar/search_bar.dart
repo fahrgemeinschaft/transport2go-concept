@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:frank_martin/pages/filter/filter_page.dart';
 import 'package:frank_martin/pages/search/search_page.dart';
 import 'package:frank_martin/providers/model/photon/feature.dart';
 import 'package:frank_martin/ui/modal_view/modal_view.dart';
-import 'package:openapi/api.dart';
+import 'package:r2gapi_flutter_sdk/model/geo_location.dart';
+import 'package:r2gapi_flutter_sdk/model/search_radius.dart';
 
 class SearchBar extends StatefulWidget {
   final String emptyTitle;
@@ -126,11 +129,11 @@ class SearchBarState extends State<SearchBar> {
     };
 
     Map<String, dynamic> map = {
-      "location": GeoLocation.fromJson(location).toJson(),
+      "location": location,
       "radius": 25
     };
 
-    return SearchRadius.fromJson(map);
+    return map as SearchRadius;
   }
 
   handleFeatureProperly(Feature itemData) {
